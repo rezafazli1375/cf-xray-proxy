@@ -1,0 +1,12 @@
+name = "cf-xray-proxy"
+main = "src/index.ts"
+compatibility_date = "2026-02-10"
+workers_dev = true
+
+# Optional local/runtime override:
+# BACKEND_URL = "http://127.0.0.1:10000"
+
+[vars]
+TRANSPORT = "xhttp"
+DEBUG = "false"
+HIDE_BACKEND_URLS = "true"

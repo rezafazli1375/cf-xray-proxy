@@ -1,0 +1,89 @@
+{
+  "name": "cf-xray-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cloudflare Worker reverse proxy frontend for VLESS & VMess (xhttp / httpupgrade / ws transports) – forwards upgrade requests to backend Xray/sing-box",
+  "author": "YrustPd",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "wrangler deploy --dry-run",
+    "deploy": "wrangler deploy",
+    "lint": "eslint \"src/**/*.{ts,d.ts}\"",
+    "lint:fix": "npm run lint -- --fix",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "keywords": [
+    "cloudflare-workers",
+    "xray",
+    "sing-box",
+    "vless",
+    "vmess",
+    "proxy",
+    "reverse-proxy",
+    "websocket",
+    "httpupgrade",
+    "xhttp"
+  ],
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260201.0",
+    "@typescript-eslint/eslint-plugin": "^8.24.0",
+    "@typescript-eslint/parser": "^8.24.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.5.0",
+    "typescript": "^5.8.2",
+    "wrangler": "^4.1.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "es2022": true,
+      "worker": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": [
+        "./tsconfig.json"
+      ],
+      "sourceType": "module"
+    },
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      "prettier"
+    ],
+    "ignorePatterns": [
+      "node_modules/",
+      ".wrangler/",
+      "dist/",
+      "coverage/"
+    ],
+    "rules": {
+      "@typescript-eslint/consistent-type-imports": "error",
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-misused-promises": [
+        "error",
+        {
+          "checksVoidReturn": false
+        }
+      ]
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 100,
+    "trailingComma": "all"
+  }
+}
